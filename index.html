@@ -18,7 +18,7 @@
                 <input type="text" placeholder="What needs to be done?" class="text-[1.6em] w-full" v-model="add_value" @keyup.enter="add_item()">
             </div>
             <ul class="text-left">
-                <li v-for="item, index in todo" class="group text-[1.8em] w-full border-[1px] border-[#ededed] py-[10px] px-[18px] bg-[#fff] flex items-center relative">
+                <li v-for="item, index in filters_active" class="group text-[1.8em] w-full border-[1px] border-[#ededed] py-[10px] px-[18px] bg-[#fff] flex items-center relative">
                     <input type="checkbox" class="w-6 h-6 rounded-full shadow-[0px_0px_0_1px_#dddddd] mr-5 text-green-600" :class="{'text-green-500': item.complet}" v-model="item.complet"  />
                     <p @dblclick="item.contenteditable = ! item.contenteditable" @keydown.enter.prevent @keyup.enter="edit($event, index)" :contenteditable="item.contenteditable" class="break-all w-[75%] p-[10px] focus-visible:outline-0 rounded-lg" :class="{'line-through': item.complet,'text-[#c2c2c2]': item.complet, 'border-[1px]' : item.contenteditable, 'border-[#ead8d8]' : item.contenteditable}">{{item.title}}</p>
                     <span @click="remove_item(index)" class="absolute right-[8%] top-[50%] cursor-pointer translate-x-[-50%] translate-y-[-50%] after:absolute after:bg-[#cc9a9a] after:w-[15px] after:h-[3px] after:rotate-45 before:absolute before:bg-[#cc9a9a] before:w-[15px] before:h-[3px] before:-rotate-45 group-hover:before:bg-[#b40404] group-hover:after:bg-[#b40404]"></span>
@@ -38,7 +38,7 @@
         </div>
     </div>
     
-    <script src="js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
     <script src="js/main.js"></script>
 
 </body>
