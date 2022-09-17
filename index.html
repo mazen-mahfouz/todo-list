@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/main.css">
+    <title>Todo List</title>
+</head>
+<body class="bg-[#f5f5f5] text-[12px] text-center">
+  
+    <div id="app" class="flex justify-center items-center flex-col">
+        {{loadlocal}}
+        <h1 class="text-[6.5em] md:text-[9em] text-[rgba(175,_47,_47,_0.15)]">todos</h1>
+        <div class="w-[90%] shadow-[0px_15px_0_-3px_#e9e9e9,_0px_30px_0_-9px_#dddddd,_0px_0px_40px_7px_#dddddd] lg:w-[45%] mb-[40px]">
+            <div class="w-full bg-[#fefefe] py-[20px] px-[15px] flex items-center justify-center">
+                <span class="hover:text-gray-600 text-[1.6em] rotate-90 text-[#e6e6e6] cursor-pointer mr-[20px]" :class="{'text-gray-600' : alldone}" @click="complet_app()">❯</span>
+                <input type="text" placeholder="What needs to be done?" class="text-[1.6em] w-full" v-model="add_value" @keyup.enter="add_item()">
+            </div>
+            <ul class="text-left">
+                <li v-for="item, index in filters_active" class="group text-[1.8em] w-full border-[1px] border-[#ededed] py-[10px] px-[18px] bg-[#fff] flex items-center relative">
+                    <input type="checkbox" class="w-6 h-6 rounded-full shadow-[0px_0px_0_1px_#dddddd] mr-5 text-green-600" :class="{'text-green-500': item.complet}" v-model="item.complet"  />
+                    <p @dblclick="item.contenteditable = ! item.contenteditable" @keydown.enter.prevent @keyup.enter="edit($event, index)" :contenteditable="item.contenteditable" class="break-all w-[75%] p-[10px] focus-visible:outline-0 rounded-lg" :class="{'line-through': item.complet,'text-[#c2c2c2]': item.complet, 'border-[1px]' : item.contenteditable, 'border-[#ead8d8]' : item.contenteditable}">{{item.title}}</p>
+                    <span @click="remove_item(index)" class="absolute right-[8%] top-[50%] cursor-pointer translate-x-[-50%] translate-y-[-50%] after:absolute after:bg-[#cc9a9a] after:w-[15px] after:h-[3px] after:rotate-45 before:absolute before:bg-[#cc9a9a] before:w-[15px] before:h-[3px] before:-rotate-45 group-hover:before:bg-[#b40404] group-hover:after:bg-[#b40404]"></span>
+                </li>
+            </ul>
+            <div class="border-[1px] border-[#ededed] w-full pt-[10px] px-[2px] bg-white flex justify-around flex-wrap items-center text-[1.2em]">
+                <div class="mb-[10px] border-[1px] border-[#ededed] p-[10px_22px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]"><span class="font-bold">{{count_active}}</span> items left</div>
+                <div class="group mb-[10px] border-[1px] border-[#ededed] p-[4px_10px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]">
+                    <ul class="inline-flex">
+                        <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='all', 'group-hover:text-[#4d4d4d]': visibility=='all'}" @click="visibility = 'all'"><a href="#/all">All</a></li>
+                        <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='active', 'group-hover:text-[#4d4d4d]': visibility=='active'}" @click="visibility = 'active'"><a href="#/active">Active</a></li>
+                        <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='complet', 'group-hover:text-[#4d4d4d]': visibility=='complet'}" @click="visibility = 'complet'"><a href="#/complet">Complet</a></li>
+                    </ul>
+                </div>
+                <div @click="remove_complet()"  class="mb-[10px] border-[1px] z-30 cursor-pointer border-[#ededed] p-[10px_22px] transition duration-500 ease-out overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]">Clear Complet</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+</html>
