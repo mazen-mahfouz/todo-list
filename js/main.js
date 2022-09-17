@@ -1,3 +1,19 @@
+        let filters = {
+    'all': function (todos) {
+        return todos
+    },
+    'active': function (todos) {
+        return todos.filter(function(todo){
+            return ! todo.complet
+        })
+    },
+    'complet': function (todos) {
+        return todos.filter(function(todo){
+            return todo.complet
+        })
+    }
+}
+
 
 var app = new Vue({
     el: '#app',
