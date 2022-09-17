@@ -1,4 +1,4 @@
-        let filters = {
+        var filters = {
     'all': function (todos) {
         return todos
     },
