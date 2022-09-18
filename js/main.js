@@ -64,8 +64,9 @@ var app = new Vue({
     },
     computed: {
         'loadlocal' : function (){
-            console.log('sads')
-            this.todo = JSON.parse(this.local);
+            if(this.local !== null){
+                this.todo = JSON.parse(this.local);
+            }
         },
        'filters_active': function(){
             localStorage.setItem('item', JSON.stringify(this.todo));
@@ -82,3 +83,4 @@ var app = new Vue({
        },
     },
 })
+
