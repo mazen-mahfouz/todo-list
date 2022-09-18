@@ -64,7 +64,7 @@ var app = new Vue({
     },
     computed: {
         'loadlocal' : function (){
-            if(this.local !== null){
+            if(this.local == null){
                 this.todo = JSON.parse(this.local);
             }
         },
