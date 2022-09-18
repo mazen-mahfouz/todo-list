@@ -26,15 +26,15 @@
                 </li>
             </ul>
             <div class="border-[1px] border-[#ededed] w-full pt-[10px] px-[2px] bg-white flex justify-around flex-wrap items-center text-[1.2em]">
-                <div class="mb-[10px] border-[1px] border-[#ededed] p-[10px_22px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]"><span class="font-bold">{{count_active}}</span> items left</div>
-                <div class="group mb-[10px] border-[1px] border-[#ededed] p-[4px_10px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]">
+                <div class="mb-[10px] border-[1px] border-[#ededed] p-[10px_22px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#474747]"><span class="font-bold">{{count_active}}</span> items left</div>
+                <div class="group mb-[10px] border-[1px] border-[#ededed] p-[4px_10px] transition duration-500 ease-out z-40 overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#474747]">
                     <ul class="inline-flex">
                         <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='all', 'group-hover:text-[#4d4d4d]': visibility=='all'}" @click="visibility = 'all'"><a href="#/all">All</a></li>
                         <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='active', 'group-hover:text-[#4d4d4d]': visibility=='active'}" @click="visibility = 'active'"><a href="#/active">Active</a></li>
                         <li class="p-[5px_10px] mx-[5px] cursor-pointer" :class="{'bg-[whitesmoke]' : visibility=='complet', 'group-hover:text-[#4d4d4d]': visibility=='complet'}" @click="visibility = 'complet'"><a href="#/complet">Complet</a></li>
                     </ul>
                 </div>
-                <div @click="remove_complet()"  class="mb-[10px] border-[1px] z-30 cursor-pointer border-[#ededed] p-[10px_22px] transition duration-500 ease-out overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#fafafa]">Clear Complet</div>
+                <div @click="remove_complet()"  class="mb-[10px] border-[1px] z-30 cursor-pointer border-[#ededed] p-[10px_22px] transition duration-500 ease-out overflow-hidden relative after:absolute after:top-[-10px] after:left-[-10px] after:bg-[rgba(175,_47,_47,_0.15)] after:-z-10 after:w-[20px] after:h-[20px]  after:rounded-[100%] hover:after:rounded-[0%] hover:after:w-[120%] hover:after:h-[150%] hover:text-[#474747]">Clear Complet</div>
             </div>
         </div>
     </div>
