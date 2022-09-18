@@ -1,18 +1,18 @@
-// let filters = {
-//     'all': function (todos) {
-//         return todos
-//     },
-//     'active': function (todos) {
-//         return todos.filter(function(todo){
-//             return ! todo.complet
-//         })
-//     },
-//     'complet': function (todos) {
-//         return todos.filter(function(todo){
-//             return todo.complet
-//         })
-//     }
-// }
+let filters = {
+    'all': function (todos) {
+        return todos
+    },
+    'active': function (todos) {
+        return todos.filter(function(todo){
+            return ! todo.complet
+        })
+    },
+    'complet': function (todos) {
+        return todos.filter(function(todo){
+            return todo.complet
+        })
+    }
+}
 
 
 var app = new Vue({
@@ -46,22 +46,20 @@ var app = new Vue({
         this.todo.splice(x,1)
       },
       'complet_app': function(){
-        // if(filters['active'] (this.todo).length == 0){
-        //     return filters['complet'](this.todo).filter(function(el){
-        //         el.complet = !el.complet;
-        //     })
-        // }else{
-        //     return filters['all'](this.todo).filter(function(el){
-        //         if(el.complet == false){
-        //             el.complet = !el.complet;
-        //         }
-        //     })
-        // }
+        if(filters['active'] (this.todo).length == 0){
+            return filters['complet'](this.todo).filter(function(el){
+                el.complet = !el.complet;
+            })
+        }else{
+            return filters['all'](this.todo).filter(function(el){
+                if(el.complet == false){
+                    el.complet = !el.complet;
+                }
+            })
+        }
       },
       'remove_complet': function () {
-        this.todo =  this.todo.filter(function(el){
-            return ! el.complet
-        })
+        this.todo = filters['active'] (this.todo)
       }
     },
     computed: {
@@ -70,32 +68,17 @@ var app = new Vue({
             this.todo = JSON.parse(this.local);
         },
        'filters_active': function(){
-            localStorage.setItem('item', JSON.stringify(this.todo));  
-            if(this.visibility == 'all'){
-               this.todo.filter(function(el){
-                    return el;
-                })
-            }else if(this.visibility == 'active'){
-                return this.todo.filter(function(el){
-                    return ! el.complet;
-                })
-            }else if(this.visibility == 'complet'){
-                return this.todo.filter(function(el){
-                    return el.complet;
-                })
-            }
+            localStorage.setItem('item', JSON.stringify(this.todo));
+            return filters[this.visibility](this.todo)
+           
        },
        'count_active': function(){
-        // if(filters['active'] (this.todo).length == 0 && filters['all'] (this.todo).length > 0){
-        //     this.alldone = true;
-        // }else{
-        //     this.alldone = false;
-        // }
-        let fil = this.todo.filter(function(el){
-            return ! el.complet
-        })
-
-        return fil.length
+        if(filters['active'] (this.todo).length == 0 && filters['all'] (this.todo).length > 0){
+            this.alldone = true;
+        }else{
+            this.alldone = false;
+        }
+           return filters['active'] (this.todo).length;
        },
     },
 })
