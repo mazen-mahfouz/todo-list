@@ -64,11 +64,12 @@ var app = new Vue({
     },
     computed: {
         'loadlocal' : function (){
-             if(this.local !== 'null'){
+          if(this.local !== null){
                 console.log('sadasd')
                 this.todo = JSON.parse(this.local);
             }else{
-                localStorage.setItem('item', JSON.stringify(this.todo));
+                this.todo = [];
+                window.localStorage.setItem('item','[]')
             }
         },
        'filters_active': function(){
