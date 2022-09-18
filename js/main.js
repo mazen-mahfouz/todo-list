@@ -72,7 +72,7 @@ var app = new Vue({
        'filters_active': function(){
             localStorage.setItem('item', JSON.stringify(this.todo));  
             if(this.visibility == 'all'){
-               this.todo.map(function(el){
+               this.todo.filter(function(el){
                     return el;
                 })
             }else if(this.visibility == 'active'){
