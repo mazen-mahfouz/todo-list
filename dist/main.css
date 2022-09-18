@@ -960,12 +960,12 @@ select {
   font-size: 1.2em;
 }
 
-.text-\[12\.5px\] {
-  font-size: 12.5px;
+.text-\[10px\] {
+  font-size: 10px;
 }
 
-.text-\[10.5px\] {
-  font-size: 10.5px;
+.text-\[10px\] {
+  font-size: 10px;
 }
 
 .font-bold {
