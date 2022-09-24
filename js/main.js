@@ -63,9 +63,8 @@ var app = new Vue({
       }
     },
     computed: {
-        'loadlocal' : function (){
-          if(this.local !== null){
-                console.log('sadasd')
+       'loadlocal' : function (){
+            if(this.local !== null && this.local !== 'null' && this.local !== 'undefined' && this.local[0] == '[' && this.local[this.local.length - 1] == ']' && this.local.length > 10){
                 this.todo = JSON.parse(this.local);
             }else{
                 this.todo = [];
